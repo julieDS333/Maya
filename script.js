@@ -241,7 +241,7 @@ function resetGame6() {
   card.querySelector('.card-inner').classList.remove('flipped');
   card.querySelector('.card-front img').src = '';
   document.getElementById('game6-hint').textContent = 'Tap the card to reveal';
-  hideEl('game6-archetype'); hideEl('game6-speech'); hideEl('game6-button'); hideEl('game6-again');stopFlyingMate();
+  hideEl('game6-archetype'); hideEl('game6-speech'); hideEl('game6-button'); hideEl('game6-again'); hideEl('game6-duo');stopFlyingMate();
 }
 function drawGame6() {
   if (g6done) return; g6done = true;
@@ -252,13 +252,10 @@ function drawGame6() {
     var cardName = cardFile.replace('MW_','').replace('.webp','').replace(/_/g,' ');
     document.getElementById('game6-hint').textContent = cardName;
     document.getElementById('game6-type-text').textContent = currentFriend.type;
-    showEl('game6-archetype');startFlyingMate();
+    showEl('game6-archetype');
+    setTimeout(function() { startFlyingMate(); }, 5000);
     setTimeout(function() {
       showSpeech('game6', currentFriend.text);
-      if (currentFriend.duo) {
-      document.getElementById('game6-duo-text').textContent = currentFriend.duo;
-      showEl('game6-duo');
-      }
       if (currentFriend.hasButton) { document.getElementById('game6-button').textContent = currentFriend.buttonLabel; showEl('game6-button'); }
       showEl('game6-again');
     }, 600);
@@ -332,9 +329,6 @@ function moveMateBtnRandom() {
 
 function catchMate() {
   stopFlyingMate();
-  var duo = document.getElementById('game6-duo-text');
-  if (duo) {
-    document.getElementById('game6-duo').classList.remove('hidden');
-    duo.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
+  document.getElementById('game6-duo-text').textContent = currentFriend.duo;
+  showEl('game6-duo');
 }
