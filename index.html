@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carlos the Oracle — Maya's Birthday</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="bg-overlay"></div>
+  <div class="stars" id="stars"></div>
+
+  <!-- ===== LANDING ===== -->
+  <div class="screen active" id="screen-landing">
+    <div class="landing-inner">
+      <p class="landing-universe" id="landing-line1">The universe has been preparing this moment since Maya was born.</p>
+      <div class="carlos-halo-wrap" id="landing-carlos">
+        <div class="halo"></div>
+        <img src="carlos.png" alt="Carlos the Oracle" class="carlos-portrait" />
+      </div>
+      <p class="landing-greeting" id="landing-greeting"></p>
+      <p class="landing-line" id="landing-line2">I am the closest thing to God. Latino version.</p>
+      <p class="landing-line" id="landing-line3">Carlos sees all. Carlos knows all. Carlos is also on his second drink and feeling very prophetic right now.</p>
+      <button class="btn-primary pulse" id="landing-btn" onclick="goTo('screen-menu')">Trust Fate</button>
+    </div>
+  </div>
+
+  <!-- ===== MENU ===== -->
+  <div class="screen" id="screen-menu">
+    <div class="menu-inner">
+      <div class="carlos-small">
+        <img src="carlos.png" alt="Carlos" />
+        <span>Carlos awaits your question.</span>
+      </div>
+      <h2 class="menu-title">Choose Your Fate</h2>
+      <div class="game-grid">
+        <button class="game-card" onclick="goTo('screen-game1')">
+          <span class="game-icon">🍹</span>
+          <span class="game-name">Cup of Fate</span>
+          <span class="game-desc">How many drinks does Maya need?</span>
+        </button>
+        <button class="game-card" onclick="goTo('screen-game3')">
+          <span class="game-icon">🔮</span>
+          <span class="game-name">Your Future Self</span>
+          <span class="game-desc">10 years from now. Brace yourself.</span>
+        </button>
+        <button class="game-card" onclick="goTo('screen-game6')">
+          <span class="game-icon">💜</span>
+          <span class="game-name">What Friend Are You?</span>
+          <span class="game-desc">At Maya's party. Tonight. Right now.</span>
+        </button>
+        <button class="game-card" onclick="goTo('screen-game7')">
+          <span class="game-icon">⚡</span>
+          <span class="game-name">Dare or Destiny</span>
+          <span class="game-desc">The cards assign you a mission.</span>
+        </button>
+        <button class="game-card game-card--wide" onclick="goTo('screen-game12')">
+          <span class="game-icon">🎁</span>
+          <span class="game-name">The Gift Oracle</span>
+          <span class="game-desc">What should you have gotten Maya? It's not too late.</span>
+        </button>
+      </div>
+      <button class="btn-goodbye" onclick="goTo('screen-bye')">Say goodbye to Carlos</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME 1: CUP OF FATE ===== -->
+  <div class="screen" id="screen-game1">
+    <div class="game-inner">
+      <button class="btn-back" onclick="goTo('screen-menu')">← Back</button>
+      <h2 class="game-title">Cup of Fate</h2>
+      <p class="game-intro">The cups know what Maya needs. Do you dare ask?</p>
+      <div class="card-stage">
+        <div class="tarot-card" id="game1-card" onclick="drawGame1()">
+          <div class="card-inner">
+            <div class="card-back"><span>?</span></div>
+            <div class="card-front"><img src="" alt="tarot card" /></div>
+          </div>
+        </div>
+        <p class="card-hint" id="game1-hint">Tap the card to reveal</p>
+      </div>
+      <div class="spritz-row" id="game1-spritz" style="display:none"></div>
+      <div class="oracle-speech hidden" id="game1-speech">
+        <img src="carlos.png" class="speech-carlos" alt="Carlos"/>
+        <div class="speech-bubble" id="game1-text"></div>
+      </div>
+      <button class="btn-secondary hidden" id="game1-again" onclick="resetGame1()">Ask Again</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME 3: YOUR FUTURE SELF ===== -->
+  <div class="screen" id="screen-game3">
+    <div class="game-inner">
+      <button class="btn-back" onclick="goTo('screen-menu')">← Back</button>
+      <h2 class="game-title">Your Future Self</h2>
+      <p class="game-intro">In 10 years. Carlos has looked. Carlos has concerns.</p>
+      <div class="card-stage">
+        <div class="tarot-card" id="game3-card" onclick="drawGame3()">
+          <div class="card-inner">
+            <div class="card-back"><span>?</span></div>
+            <div class="card-front"><img src="" alt="tarot card" /></div>
+          </div>
+        </div>
+        <p class="card-hint" id="game3-hint">Tap the card to reveal</p>
+      </div>
+      <div class="oracle-speech hidden" id="game3-speech">
+        <img src="carlos.png" class="speech-carlos" alt="Carlos"/>
+        <div class="speech-bubble" id="game3-text"></div>
+      </div>
+      <div class="maya-reaction hidden" id="game3-maya">
+        <img src="maya_head.png" alt="Maya" class="maya-head"/>
+        <div class="maya-bubble" id="game3-maya-text"></div>
+      </div>
+      <button class="btn-secondary hidden" id="game3-again" onclick="resetGame3()">See Another Future</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME 6: WHAT FRIEND ARE YOU ===== -->
+  <div class="screen" id="screen-game6">
+    <div class="game-inner">
+      <button class="btn-back" onclick="goTo('screen-menu')">← Back</button>
+      <h2 class="game-title">What Friend Are You?</h2>
+      <p class="game-intro">Tonight. At this party. Carlos already knows.</p>
+      <div class="card-stage">
+        <div class="tarot-card" id="game6-card" onclick="drawGame6()">
+          <div class="card-inner">
+            <div class="card-back"><span>?</span></div>
+            <div class="card-front"><img src="" alt="tarot card" /></div>
+          </div>
+        </div>
+        <p class="card-hint" id="game6-hint">Tap the card to reveal</p>
+      </div>
+      <div class="friend-type hidden" id="game6-type">
+        <span id="game6-type-text"></span>
+      </div>
+      <div class="oracle-speech hidden" id="game6-speech">
+        <img src="carlos.png" class="speech-carlos" alt="Carlos"/>
+        <div class="speech-bubble" id="game6-text"></div>
+      </div>
+      <button class="btn-secondary hidden" id="game6-button" onclick="friendButtonClick()"></button>
+      <button class="btn-secondary hidden" id="game6-again" onclick="resetGame6()">Try Again</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME 7: DARE OR DESTINY ===== -->
+  <div class="screen" id="screen-game7">
+    <div class="game-inner">
+      <button class="btn-back" onclick="goTo('screen-menu')">← Back</button>
+      <h2 class="game-title">Dare or Destiny</h2>
+      <p class="game-intro">The cards have a mission for you. Carlos is watching.</p>
+      <div class="card-stage">
+        <div class="tarot-card" id="game7-card" onclick="drawGame7()">
+          <div class="card-inner">
+            <div class="card-back"><span>?</span></div>
+            <div class="card-front"><img src="" alt="tarot card" /></div>
+          </div>
+        </div>
+        <p class="card-hint" id="game7-hint">Tap the card to reveal your mission</p>
+      </div>
+      <div class="dare-badge hidden" id="game7-dare">
+        <span id="game7-dare-text"></span>
+      </div>
+      <div class="oracle-speech hidden" id="game7-speech">
+        <img src="carlos.png" class="speech-carlos" alt="Carlos"/>
+        <div class="speech-bubble" id="game7-text"></div>
+      </div>
+      <button class="btn-secondary hidden" id="game7-again" onclick="resetGame7()">Different Mission</button>
+    </div>
+  </div>
+
+  <!-- ===== GAME 12: GIFT ORACLE ===== -->
+  <div class="screen" id="screen-game12">
+    <div class="game-inner">
+      <button class="btn-back" onclick="goTo('screen-menu')">← Back</button>
+      <h2 class="game-title">The Gift Oracle</h2>
+      <p class="game-intro">What should you have gotten Maya? It's not too late.</p>
+      <div class="card-stage">
+        <div class="tarot-card" id="game12-card" onclick="drawGame12()">
+          <div class="card-inner">
+            <div class="card-back"><span>?</span></div>
+            <div class="card-front"><img src="" alt="tarot card" /></div>
+          </div>
+        </div>
+        <p class="card-hint" id="game12-hint">Tap to reveal what you should have done</p>
+      </div>
+      <div class="gift-reveal hidden" id="game12-gift">
+        <img id="game12-gift-img" src="" alt="gift" class="gift-image"/>
+        <div class="gift-label" id="game12-gift-label"></div>
+      </div>
+      <div class="oracle-speech hidden" id="game12-speech">
+        <img src="carlos.png" class="speech-carlos" alt="Carlos"/>
+        <div class="speech-bubble" id="game12-text"></div>
+      </div>
+      <button class="btn-secondary hidden" id="game12-again" onclick="resetGame12()">Try Another Gift</button>
+    </div>
+  </div>
+
+  <!-- ===== BYE SCREEN ===== -->
+  <div class="screen" id="screen-bye">
+    <div class="bye-inner">
+      <div class="carlos-halo-wrap">
+        <div class="halo"></div>
+        <img src="carlos.png" alt="Carlos" class="carlos-portrait" />
+      </div>
+      <p class="bye-text">It was nice to meet you.</p>
+      <p class="bye-text">Now I disappear.</p>
+      <p class="bye-text bye-italic">Because Carlos is like the wind — you can feel him but never catch him.</p>
+      <p class="bye-bitch">Bitch.</p>
+      <div class="builder-section">
+        <img src="your_face.png" alt="The Builder" class="builder-face" />
+        <p class="builder-text">Made with love by someone who is not Carlos.<br/>Happy Birthday Maya 🎂</p>
+      </div>
+      <button class="btn-secondary" onclick="goTo('screen-menu')">Back to the Oracle</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
