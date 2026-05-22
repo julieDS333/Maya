@@ -300,3 +300,41 @@ function drawGame12() {
 createStars();
 goTo('screen-landing');
 runLandingSequence();
+
+// ===== FLYING MATE BUTTON =====
+var mateInterval = null;
+
+function startFlyingMate() {
+  var btn = document.getElementById('btn-find-mate');
+  if (!btn) return;
+  btn.classList.add('active');
+  moveMateBtnRandom();
+  mateInterval = setInterval(moveMateBtnRandom, 800);
+}
+
+function stopFlyingMate() {
+  var btn = document.getElementById('btn-find-mate');
+  if (btn) btn.classList.remove('active');
+  if (mateInterval) { clearInterval(mateInterval); mateInterval = null; }
+}
+
+function moveMateBtnRandom() {
+  var btn = document.getElementById('btn-find-mate');
+  if (!btn) return;
+  var maxX = window.innerWidth - btn.offsetWidth - 20;
+  var maxY = window.innerHeight - btn.offsetHeight - 20;
+  var x = Math.max(10, Math.floor(Math.random() * maxX));
+  var y = Math.max(10, Math.floor(Math.random() * maxY));
+  btn.style.transition = 'left 0.7s cubic-bezier(0.4,0,0.2,1), top 0.7s cubic-bezier(0.4,0,0.2,1)';
+  btn.style.left = x + 'px';
+  btn.style.top = y + 'px';
+}
+
+function catchMate() {
+  stopFlyingMate();
+  var duo = document.getElementById('game6-duo-text');
+  if (duo) {
+    document.getElementById('game6-duo').classList.remove('hidden');
+    duo.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
