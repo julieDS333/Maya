@@ -1,0 +1,397 @@
+/* CARLOS THE ORACLE — MAYA'S BIRTHDAY SITE */
+
+:root {
+  --void: #08050f;
+  --deep: #0e0820;
+  --purple-dark: #1a0f35;
+  --purple-mid: #2d1b69;
+  --purple-glow: #6b3fa0;
+  --purple-bright: #9b59d0;
+  --gold: #c9a84c;
+  --gold-light: #e8c96d;
+  --gold-glow: #f0d878;
+  --cream: #f0e6d3;
+  --glass: rgba(8, 5, 15, 0.72);
+  --glass-border: rgba(201,168,76,0.25);
+  --card-w: 155px;
+  --card-h: 270px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--void);
+  color: var(--cream);
+  font-family: 'EB Garamond', Georgia, serif;
+  overflow-x: hidden;
+}
+
+/* ===== BACKGROUND ===== */
+body {
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+}
+
+.bg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 5, 15, 0.55);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== STARS ===== */
+.stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.star {
+  position: absolute; background: white; border-radius: 50%;
+  animation: twinkle var(--dur) ease-in-out infinite; opacity: 0;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: var(--op); transform: scale(1); }
+}
+
+/* ===== SCREENS ===== */
+.screen {
+  display: none; position: relative; z-index: 1;
+  min-height: 100vh; padding: 2rem 1.2rem 4rem;
+  flex-direction: column; align-items: center; justify-content: center;
+}
+.screen.active { display: flex; animation: fadeUp 0.6s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== GLASS BOX MIXIN ===== */
+.glass {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
+}
+
+/* ===== LANDING ===== */
+.landing-inner {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.1rem; text-align: center; max-width: 400px;
+}
+
+.landing-universe {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.85rem, 3vw, 1rem);
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+  text-shadow: 0 0 20px rgba(201,168,76,0.5);
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 0.6rem 1.2rem; border-radius: 4px; backdrop-filter: blur(8px);
+}
+
+#landing-carlos, #landing-greeting, #landing-line2, #landing-line3, #landing-btn {
+  opacity: 0; transform: translateY(10px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.landing-universe.visible, #landing-carlos.visible, #landing-greeting.visible,
+#landing-line2.visible, #landing-line3.visible, #landing-btn.visible {
+  opacity: 1; transform: translateY(0);
+}
+
+.landing-greeting {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  color: var(--cream);
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 0.7rem 1.2rem; border-radius: 4px; backdrop-filter: blur(8px);
+}
+
+.landing-line {
+  font-style: italic;
+  font-size: clamp(0.9rem, 3.5vw, 1rem);
+  color: rgba(240,230,211,0.8);
+  line-height: 1.5;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 0.6rem 1rem; border-radius: 4px; backdrop-filter: blur(8px);
+}
+
+/* ===== CARLOS PORTRAIT ===== */
+.carlos-halo-wrap { position: relative; width: 140px; height: 140px; }
+.halo {
+  position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+  width: 130px; height: 130px; border-radius: 50%;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 25px var(--gold), 0 0 50px rgba(201,168,76,0.25);
+  animation: haloRotate 8s linear infinite;
+}
+@keyframes haloRotate {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+.carlos-portrait {
+  width: 130px; height: 130px; border-radius: 50%;
+  object-fit: cover; object-position: top; position: relative; z-index: 1;
+  border: 2px solid var(--gold);
+  box-shadow: 0 0 30px rgba(107,63,160,0.7);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  font-family: 'Cinzel', serif; font-size: 1rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--purple-mid), var(--purple-glow));
+  color: var(--gold-light); border: 1px solid var(--gold); border-radius: 2px;
+  cursor: pointer; transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(107,63,160,0.5);
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(107,63,160,0.8), 0 0 20px rgba(201,168,76,0.3); transform: translateY(-2px); }
+.btn-primary.pulse { animation: buttonPulse 2.5s ease-in-out infinite; }
+@keyframes buttonPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(107,63,160,0.5); }
+  50% { box-shadow: 0 0 40px rgba(107,63,160,0.9), 0 0 20px rgba(201,168,76,0.4); }
+}
+
+.btn-secondary {
+  font-family: 'Cinzel', serif; font-size: 0.85rem;
+  letter-spacing: 0.1em; padding: 0.7rem 1.8rem;
+  background: var(--glass); color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.4); border-radius: 2px;
+  cursor: pointer; transition: all 0.3s ease;
+  backdrop-filter: blur(8px); margin-top: 0.5rem;
+}
+.btn-secondary:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+.btn-back {
+  font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 0.1em;
+  background: transparent; color: rgba(201,168,76,0.6); border: none;
+  cursor: pointer; align-self: flex-start; margin-bottom: 0.8rem;
+  transition: color 0.2s; padding: 0;
+}
+.btn-back:hover { color: var(--gold); }
+
+.btn-goodbye {
+  font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em;
+  background: transparent; color: rgba(240,230,211,0.3);
+  border: 1px solid rgba(240,230,211,0.1); border-radius: 2px;
+  padding: 0.5rem 1rem; cursor: pointer; transition: all 0.3s;
+  margin-top: 1rem;
+}
+.btn-goodbye:hover { color: rgba(240,230,211,0.7); border-color: rgba(240,230,211,0.3); }
+
+/* ===== MENU ===== */
+.menu-inner {
+  width: 100%; max-width: 500px;
+  display: flex; flex-direction: column; align-items: center; gap: 1.2rem;
+}
+.carlos-small { display: flex; align-items: center; gap: 0.8rem; font-style: italic; color: rgba(240,230,211,0.6); font-size: 0.9rem; }
+.carlos-small img { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--gold); object-fit: cover; object-position: top; }
+.menu-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.3rem, 5vw, 1.8rem); color: var(--gold-light); text-align: center; }
+
+.game-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; width: 100%; }
+.game-card {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  padding: 1rem 0.7rem;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  border-radius: 4px; cursor: pointer; transition: all 0.3s ease; text-align: center;
+  backdrop-filter: blur(8px);
+}
+.game-card:hover { border-color: var(--gold); box-shadow: 0 0 20px rgba(107,63,160,0.4); transform: translateY(-2px); }
+.game-card--wide { grid-column: 1 / -1; }
+.game-icon { font-size: 1.6rem; }
+.game-name { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--gold-light); font-weight: 600; }
+.game-desc { font-size: 0.75rem; color: rgba(240,230,211,0.5); font-style: italic; line-height: 1.3; }
+
+/* ===== GAME INNER ===== */
+.game-inner {
+  width: 100%; max-width: 440px;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.game-title { font-family: 'Cinzel Decorative', serif; font-size: clamp(1.2rem, 5vw, 1.6rem); color: var(--gold-light); text-align: center; }
+.game-intro { font-style: italic; color: rgba(240,230,211,0.65); text-align: center; font-size: 0.9rem; line-height: 1.5; }
+
+/* ===== TAROT CARD ===== */
+.card-stage { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+.tarot-card { width: var(--card-w); height: var(--card-h); perspective: 1000px; cursor: pointer; }
+.card-inner {
+  position: relative; width: 100%; height: 100%;
+  transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); border-radius: 6px;
+}
+.card-inner.flipped { transform: rotateY(180deg); }
+.card-back, .card-front {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: 6px; overflow: hidden;
+}
+.card-back {
+  background: linear-gradient(145deg, var(--purple-dark), var(--purple-mid));
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 25px rgba(107,63,160,0.5);
+}
+.card-back::before {
+  content: ''; position: absolute; inset: 8px;
+  border: 1px solid rgba(201,168,76,0.25); border-radius: 4px;
+  background: repeating-linear-gradient(45deg, rgba(107,63,160,0.04) 0, rgba(107,63,160,0.04) 1px, transparent 1px, transparent 10px),
+              repeating-linear-gradient(-45deg, rgba(107,63,160,0.04) 0, rgba(107,63,160,0.04) 1px, transparent 1px, transparent 10px);
+}
+.card-back span {
+  font-family: 'Cinzel Decorative', serif; font-size: 2.5rem;
+  color: var(--gold); opacity: 0.7; position: relative; z-index: 1;
+  animation: floatQ 3s ease-in-out infinite;
+}
+@keyframes floatQ { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.card-front { transform: rotateY(180deg); background: var(--void); border: 2px solid var(--gold); }
+.card-front img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-hint {
+  font-family: 'Cinzel', serif; font-size: 0.72rem;
+  letter-spacing: 0.15em; color: rgba(201,168,76,0.5); text-transform: uppercase;
+  animation: hintPulse 2s ease-in-out infinite;
+}
+@keyframes hintPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+/* ===== SPRITZ ROW ===== */
+.spritz-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem; max-width: 300px; }
+.spritz-item { width: 32px; height: 32px; object-fit: contain; animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+@keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ===== ORACLE SPEECH ===== */
+.oracle-speech {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  max-width: 400px; animation: fadeUp 0.5s ease both;
+}
+.oracle-speech.hidden { display: none; }
+.speech-carlos {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--gold); object-fit: cover; object-position: top;
+  flex-shrink: 0; box-shadow: 0 0 12px rgba(107,63,160,0.4);
+}
+.speech-bubble {
+  background: var(--glass); border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px); border-radius: 0 10px 10px 10px;
+  padding: 0.9rem 1.1rem; font-size: 0.92rem; line-height: 1.6; color: var(--cream);
+  box-shadow: 0 0 20px rgba(107,63,160,0.2);
+}
+
+/* ===== MAYA REACTION ===== */
+.maya-reaction {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  max-width: 400px; animation: fadeUp 0.5s ease 0.3s both;
+}
+.maya-reaction.hidden { display: none; }
+.maya-head { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--purple-bright); object-fit: cover; object-position: top; flex-shrink: 0; }
+.maya-bubble {
+  background: rgba(107,63,160,0.2); border: 1px solid rgba(155,89,208,0.3);
+  backdrop-filter: blur(8px); border-radius: 10px 10px 10px 0;
+  padding: 0.7rem 0.9rem; font-style: italic; font-size: 0.85rem; color: rgba(240,230,211,0.8);
+}
+
+/* ===== REVEAL STAGE (games 6 & 12) ===== */
+.reveal-stage {
+  position: relative;
+  width: var(--card-w);
+  height: var(--card-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* card flies away in a loop while result shows */
+@keyframes cardFlyAway {
+  0%   { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 1; }
+  30%  { transform: translate(120px, -80px) rotate(25deg) scale(0.8); opacity: 0.7; }
+  60%  { transform: translate(-100px, -140px) rotate(-15deg) scale(0.5); opacity: 0.3; }
+  100% { transform: translate(200px, 60px) rotate(40deg) scale(0); opacity: 0; }
+}
+
+.tarot-card.flying {
+  animation: cardFlyAway 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+/* archetype label slides in from below */
+.archetype-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: archetypeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.archetype-reveal.hidden { display: none; }
+
+@keyframes archetypeIn {
+  from { opacity: 0; transform: scale(0.6) translateY(30px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.archetype-label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1rem, 5vw, 1.4rem);
+  color: var(--gold-glow);
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 0 30px rgba(201,168,76,0.7), 0 0 60px rgba(107,63,160,0.5);
+  padding: 1rem;
+  animation: labelPulse 2s ease-in-out infinite;
+}
+
+@keyframes labelPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(201,168,76,0.5); }
+  50% { text-shadow: 0 0 40px rgba(201,168,76,0.9), 0 0 60px rgba(107,63,160,0.6); }
+}
+
+/* ===== GIFT REVEAL (inside reveal-stage) ===== */
+.gift-reveal {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem;
+  animation: archetypeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.gift-reveal.hidden { display: none; }
+.gift-image { width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 0 16px rgba(107,63,160,0.6)); animation: floatGift 3s ease-in-out infinite; }
+@keyframes floatGift { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-7px) rotate(2deg); } }
+.gift-label { font-family: 'Cinzel Decorative', serif; font-size: 0.95rem; color: var(--gold-light); text-align: center; }
+
+/* ===== BYE SCREEN ===== */
+.bye-inner {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 1.2rem; text-align: center; max-width: 380px;
+  animation: fadeUp 0.6s ease both;
+}
+.bye-text {
+  font-family: 'Cinzel', serif; font-size: clamp(1rem, 4vw, 1.2rem);
+  color: var(--cream); letter-spacing: 0.05em; line-height: 1.5;
+  background: var(--glass); border: 1px solid var(--glass-border);
+  padding: 0.5rem 1.2rem; border-radius: 4px; backdrop-filter: blur(8px);
+  width: 100%;
+}
+.bye-italic { font-style: italic; color: rgba(240,230,211,0.75); }
+.bye-bitch {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.8rem, 7vw, 2.8rem);
+  color: var(--gold-glow);
+  text-shadow: 0 0 30px rgba(201,168,76,0.6);
+  animation: bitchPulse 2s ease-in-out infinite;
+}
+@keyframes bitchPulse { 0%, 100% { text-shadow: 0 0 20px rgba(201,168,76,0.4); } 50% { text-shadow: 0 0 40px rgba(201,168,76,0.8), 0 0 60px rgba(107,63,160,0.4); } }
+
+.builder-section { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+.builder-face {
+  width: 90px; height: 90px; border-radius: 50%; object-fit: cover; object-position: top;
+  border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(107,63,160,0.5);
+}
+.builder-text { font-style: italic; color: rgba(240,230,211,0.55); font-size: 0.85rem; line-height: 1.5; }
+
+/* ===== UTILITY ===== */
+.hidden { display: none !important; }
+
+@media (max-width: 380px) {
+  :root { --card-w: 135px; --card-h: 235px; }
+  .game-grid { grid-template-columns: 1fr; }
+  .game-card--wide { grid-column: 1; }
+}
