@@ -241,7 +241,7 @@ function resetGame6() {
   card.querySelector('.card-inner').classList.remove('flipped');
   card.querySelector('.card-front img').src = '';
   document.getElementById('game6-hint').textContent = 'Tap the card to reveal';
-  hideEl('game6-archetype'); hideEl('game6-speech'); hideEl('game6-button'); hideEl('game6-again');
+  hideEl('game6-archetype'); hideEl('game6-speech'); hideEl('game6-button'); hideEl('game6-again');stopFlyingMate();
 }
 function drawGame6() {
   if (g6done) return; g6done = true;
@@ -252,7 +252,7 @@ function drawGame6() {
     var cardName = cardFile.replace('MW_','').replace('.webp','').replace(/_/g,' ');
     document.getElementById('game6-hint').textContent = cardName;
     document.getElementById('game6-type-text').textContent = currentFriend.type;
-    showEl('game6-archetype');
+    showEl('game6-archetype');startFlyingMate();
     setTimeout(function() {
       showSpeech('game6', currentFriend.text);
       if (currentFriend.duo) {
