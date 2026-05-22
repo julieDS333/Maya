@@ -55,17 +55,17 @@ var FUTURE_READINGS = [
 ];
 
 var FRIEND_TYPES = [
-  { type: "The IDGF Friend", text: "We know you do give a fuck. It's okay to care. Want a hug?", hasButton: false },
-  { type: "The Pilates Girl", text: "Girl you look like fire! And it is gay Carlos speaking here. But please stop the matcha, it's not good for your wallet and green is so over.", hasButton: true, buttonLabel: "I'm a man", buttonResponse: "You should start matcha, it's your destiny my dude." },
-  { type: "The Late Friend", text: "You know, Carlos knows, Maya knows. You think you cannot change and you're right.", hasButton: false },
-  { type: "The Smart Ass", text: "Carlos is smarter than you but honestly, good game. If you're a man, Carlos made a mistake.", hasButton: false },
-  { type: "The Boss", text: "Do you own this place? Feels like you do. You can't own Maya though, she's too expensive.", hasButton: false },
-  { type: "The Karen", text: "Breathe in, breathe out. It is okay if the waiter didn't say hello.", hasButton: false },
-  { type: "The Lover", text: "Are you secretly in love with Maya? Carlos is. Don't tell her.", hasButton: false },
-  { type: "The Alchemist", text: "You think it's the possibility of having a dream that makes life interesting. You should think less and tell Carlos what your biggest dream is.", hasButton: false },
-  { type: "The Richard Branson", text: "You think business opportunities are like buses, there's always another one coming. But you refuse to take the bus.", hasButton: false },
-  { type: "The Adventurer", text: "We know you traveled by yourself for a bit. You learned that you can shower only once or twice a week. Get over it. Carlos never showers bitch.", hasButton: false },
-  { type: "The Teacher", text: "You can't teach anything to Carlos. Carlos is like God but with a nicer moustache.", hasButton: false }
+  { type: "The IDGF Friend", text: "We know you do give a fuck. It's okay to care. Want a hug?", hasButton: false, duo: "Find the Smart Ass. You need someone who will call you out." },
+  { type: "The Pilates Girl", text: "Girl you look like fire! And it is gay Carlos speaking here. But please stop the matcha, it's not good for your wallet and green is so over.", hasButton: true, buttonLabel: "I'm a man", buttonResponse: "You should start matcha, it's your destiny my dude.",duo: "Find the Lover. They've been watching you with matcha envy." },
+  { type: "The Late Friend", text: "You know, Carlos knows, Maya knows. You think you cannot change and you're right.", hasButton: false, duo: "Find the Karen. They've been waiting for you. Loudly." },
+  { type: "The Smart Ass", text: "Carlos is smarter than you but honestly, good game. If you're a man, Carlos made a mistake.", hasButton: false, duo: "Find the IDGF Friend. They pretend not to care. You'll fix that."  },
+  { type: "The Boss", text: "Do you own this place? Feels like you do. You can't own Maya though, she's too expensive.", hasButton: false, duo: "Find the Adventurer. They need direction. You provide it." },
+  { type: "The Karen", text: "Breathe in, breathe out. It is okay if the waiter didn't say hello.", hasButton: false, duo: "Find the Late Friend. They are why you're like this." },
+  { type: "The Lover", text: "Are you secretly in love with Maya? Carlos is. Don't tell her.", hasButton: false, duo: "Find the Pilates Girl. You two will make no sense together. Perfect." },
+  { type: "The Alchemist", text: "You think it's the possibility of having a dream that makes life interesting. You should think less and tell Carlos what your biggest dream is.", hasButton: false, duo: "Find the Adventurer. They've already lived your dream. Ask them."  },
+  { type: "The Richard Branson", text: "You think business opportunities are like buses, there's always another one coming. But you refuse to take the bus.", hasButton: false, duo: "Find the Teacher. They know something you don't. Take the bus." },
+  { type: "The Adventurer", text: "We know you traveled by yourself for a bit. You learned that you can shower only once or twice a week. Get over it. Carlos never showers bitch.", hasButton: false, duo: "Find the Alchemist. They have the dream. You have the shower schedule." },
+  { type: "The Teacher", text: "You can't teach anything to Carlos. Carlos is like God but with a nicer moustache.", hasButton: false, duo: "Find the Richard Branson. Teach them humility. Good luck."}
 ];
 
 var FULL_DECK = [
