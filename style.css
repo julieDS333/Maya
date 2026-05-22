@@ -395,3 +395,19 @@ body {
   .game-grid { grid-template-columns: 1fr; }
   .game-card--wide { grid-column: 1; }
 }
+.duo-match {
+  display: flex; align-items: center; gap: 0.6rem;
+  max-width: 400px;
+  background: rgba(107,63,160,0.2);
+  border: 1px solid rgba(155,89,208,0.4);
+  backdrop-filter: blur(8px);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+  animation: fadeUp 0.5s ease both;
+}
+.duo-match.hidden { display: none; }
+.duo-icon { font-size: 1.2rem; color: var(--gold-glow); flex-shrink: 0; animation: labelPulse 2s ease-in-out infinite; }
