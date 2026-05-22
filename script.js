@@ -5,10 +5,8 @@ var ASSETS = "";
 var GREETINGS = [
   "Dear Maya's friend, I am Carlos the Oracle.",
   "Dear Maya's lover, I am Carlos the Oracle.",
-  "Dear Maya's cousin, I am Carlos the Oracle.",
   "Dear Maya's colleague who wasn't sure about coming tonight, I am Carlos the Oracle.",
   "Dear Maya's person, I am Carlos the Oracle.",
-  "Dear mysterious guest, I am Carlos the Oracle.",
   "Dear Maya's favorite — don't tell the others — I am Carlos the Oracle.",
   "Dear whoever Maya dragged here tonight, I am Carlos the Oracle."
 ];
