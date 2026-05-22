@@ -411,3 +411,28 @@ body {
 }
 .duo-match.hidden { display: none; }
 .duo-icon { font-size: 1.2rem; color: var(--gold-glow); flex-shrink: 0; animation: labelPulse 2s ease-in-out infinite; }
+
+/* ===== FLYING MATE BUTTON ===== */
+.btn-find-mate {
+  position: fixed;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(135deg, var(--purple-mid), var(--purple-glow));
+  color: var(--gold-light);
+  border: 1px solid var(--gold);
+  border-radius: 2px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 0 20px rgba(107,63,160,0.6), 0 0 10px rgba(201,168,76,0.2);
+  transition: box-shadow 0.2s;
+  display: none;
+}
+.btn-find-mate.active {
+  display: block;
+  animation: none;
+}
+.btn-find-mate:hover {
+  box-shadow: 0 0 30px rgba(107,63,160,0.9), 0 0 15px rgba(201,168,76,0.4);
+}
