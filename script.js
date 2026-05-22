@@ -102,24 +102,19 @@ var DARES = [
 
 var GIFTS = [
   { label: "A Private Island", img: "island.jpg", texts: [
-    "You should have gotten Maya a private island. Small. Tasteful. No neighbors. You did not do this. Venmo is still open.",
+    "Private island. Small. Tasteful. No neighbors. If you did not offer this. Venmo is still open.",
     "An island. Her own island. With a no-visit policy she controls entirely. You got her something else. Carlos is not angry. Carlos is disappointed. There is a difference.",
-    "The cards say island. The budget said otherwise. Carlos understands. Carlos does not accept it."
   ]},
   { label: "A Private Jet", img: "privatejet.png", texts: [
-    "First class is not the same thing. First class is a suggestion. A jet is a statement. Maya is a statement. You did not match the energy.",
-    "A private jet. No queues. No middle seat. No one asking to swap. This was the gift. You chose differently. The cards have noted this.",
-    "The jet was right there. Metaphorically. You walked past it. Carlos watched you walk past it."
+    "First class is not the same thing. First class is a suggestion. PJ is a statement. Maya is a statement. Match the energy.",
+    "A small think: a private jet. No queues. No middle seat. No one asking to swap. Good gift for a minimalist like maya",
   ]},
   { label: "A Husband", img: "husband.png", texts: [
-    "You should have gotten Maya a husband. Not just any husband. One who texts back within the hour and means it. This was outside your budget. Carlos understands. The universe is working on it.",
-    "A husband. Fully functional. Good taste in restaurants. Knows when to be quiet. Rarer than the island. You tried your best. Carlos acknowledges this.",
-    "The cards say husband. Carlos has checked the inventory. Supply is low. Demand is high. Get in line."
+    "Get Maya a husband. Not just any husband. One who has abs but doesn't brag about it",
+    "A husband. Fully functional. Good taste in restaurants. Knows when to be quiet. Peace and food that's what maya needs",
   ]},
   { label: "A Moustache", img: "moustache.png", texts: [
-    "The oracle has consulted the cards and found: a moustache. But wait — she already has one. This is not a problem. This is a power move. Carlos bows.",
-    "You should have gotten Maya a moustache. She has beaten you to it. Years ago. Without telling anyone. This is the most Maya thing Carlos has ever witnessed.",
-    "A moustache. The gift that keeps giving. Already given. By Maya. To herself. The student has become the teacher. Carlos has never been more proud and Carlos doesn't even know her. Professionally."
+    "Daiiii ! She has one already, focus on other gifts, like the private jet she deserves."  
   ]}
 ];
 
