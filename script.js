@@ -255,6 +255,10 @@ function drawGame6() {
     showEl('game6-archetype');
     setTimeout(function() {
       showSpeech('game6', currentFriend.text);
+      if (currentFriend.duo) {
+      document.getElementById('game6-duo-text').textContent = currentFriend.duo;
+      showEl('game6-duo');
+      }
       if (currentFriend.hasButton) { document.getElementById('game6-button').textContent = currentFriend.buttonLabel; showEl('game6-button'); }
       showEl('game6-again');
     }, 600);
