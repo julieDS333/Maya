@@ -82,19 +82,6 @@ var FULL_DECK = [
   "MW_Judgement.webp","MW_Temperance.webp","MW_The_World.webp","MW_Death.webp","MW_Wheel_of_Fortune.webp"
 ];
 
-var DARES = [
-  { text: "Find someone you don't know and tell them they have a great energy. Do not explain further. Walk away.", carlos: "The confusion on their face is the offering." },
-  { text: "Take a photo with someone you've never met tonight and make it look like you've known each other for years.", carlos: "Posture is everything. Carlos has never met God personally but they have photos together." },
-  { text: "Order a drink and describe it to the bartender like you invented it.", carlos: "Confidence is the only ingredient that matters. Carlos invented water. Nobody has questioned this." },
-  { text: "Find the person who looks most like they don't want to be here and make them glad they came.", carlos: "This is the highest calling Carlos has assigned tonight. Do not waste it." },
-  { text: "Do a toast. Right now. To Maya. Make it up. You have thirty seconds.", carlos: "It doesn't have to be good. It has to be real. Go." },
-  { text: "Compliment someone's shoes. Even if the shoes are bad. Especially if the shoes are bad.", carlos: "The worse the shoes the more Carlos respects the mission." },
-  { text: "Find someone alone and ask them what their most unhinged life plan is. Share yours first.", carlos: "Carlos's unhinged life plan is this website. It is going well." },
-  { text: "Dance for at least thirty seconds whether or not there is music playing.", carlos: "There is always music. You just have to be willing to hear it. Also there is music, this is a party." },
-  { text: "Tell someone at this party they look like a celebrity. Pick the celebrity carefully. Or don't. Carlos supports chaos.", carlos: "The wrong answer is always more interesting than the right one." },
-  { text: "Go find Maya right now and just say happy birthday properly. Put your phone down. Look at her. Say it like you mean it.", carlos: "The cards chose this for you specifically. Carlos does not apologize." }
-];
-
 var GIFTS = [
   { label: "A Private Island", img: "island.jpg", texts: [
     "Private island. Small. Tasteful. No neighbors. If you did not offer this. Venmo is still open.",
@@ -116,6 +103,7 @@ var GIFTS = [
 function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
 function goTo(screenId) {
+  stopFlyingMate();
   document.querySelectorAll('.screen').forEach(function(s) { s.classList.remove('active'); s.style.display = 'none'; });
   var target = document.getElementById(screenId);
   target.style.display = 'flex';
